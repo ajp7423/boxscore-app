@@ -3,7 +3,10 @@ import {Slot, Stack } from 'expo-router'
 
 const RootLayout = () => {
   return (
-    <Stack>
+    <Stack screenOptions={{
+      headerStyle: { backgroundColor: '#ddd'},
+      headerTintColor: '#333'
+      }}>
         <Stack.Screen name='Index' options={{ title: "Home"}}/>
         <Stack.Screen name='GameHistory' options={{ title: "Game History" }}/>
         <Stack.Screen name='NewGame' options={{ title: "New Game"}}/>
@@ -12,7 +15,6 @@ const RootLayout = () => {
         <Stack.Screen name='StatKeeping' options={{ title: "Score Keeping", headerShown: false}}/>
         <Stack.Screen name='LiveBoxscore' options={{ title : "Live Stats"}}/>
         <Stack.Screen name='FinalBoxscore' options={{ title : "Final Score", headerShown: false}}/>
-    
     </Stack>
   )
 }
