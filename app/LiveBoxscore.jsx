@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { Link } from 'expo-router'
+import ThemedView from '../components/ThemedView';
 
 const LiveBoxscore = () => {
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Text style={styles.title}>Live Boxscore</Text>
       <Text>the live stats in game will be able to be viewed here</Text>
-    </View>
+    </ThemedView>
   )
 }
 

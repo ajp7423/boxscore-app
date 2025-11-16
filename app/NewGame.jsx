@@ -1,15 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { Link } from 'expo-router';
+import ThemedView from '../components/ThemedView';
+import ThemedText from '../components/ThemedText';
+
 
 const NewGame = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>New Game</Text>
+    <ThemedView style={styles.container}>
+      <ThemedText style={styles.title}>New Game</ThemedText>
 
       <Link style={styles.link} href="/StatSelection">Pick-up(no FTs, 1s and 2s)➡️</Link>
       <Link style={styles.link} href="StatSelection">Regulation (2s and 3s, FTs)➡️</Link>
 
-    </View>
+    </ThemedView>
   )
 }
 

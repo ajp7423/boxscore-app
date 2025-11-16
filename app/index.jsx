@@ -2,17 +2,21 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { Link } from 'expo-router';
 
 import Logo from '../assets/images/basketball_clipart.png';
+import ThemedView from '../components/ThemedView';
+import ThemedText from '../components/ThemedText';
+
+
 
 const Home = () => {
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Image source={Logo}/>
-      <Text style={styles.title}>Boxscore</Text>
+      <ThemedText style={styles.title}>Boxscore</ThemedText>
 
       <Link style={styles.link} href="/NewGame">New Game</Link>
       <Link style={styles.link} href="/GameHistory">Game History</Link>
         
-    </View>
+    </ThemedView>
   )
 }
 

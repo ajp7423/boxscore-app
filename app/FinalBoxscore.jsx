@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { Link } from 'expo-router'
+import ThemedView from '../components/ThemedView'
 
 const FinalBoxscore = () => {
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Text style={styles.title}>Final Boxscore</Text>
       <Text>the final stats will be displayed here</Text>
       <Link style={styles.link} href="Index">Home➡️</Link>
-    </View>
+    </ThemedView>
   )
 }
 

@@ -1,21 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, useColorScheme, View } from 'react-native'
 import {Slot, Stack } from 'expo-router'
+import { Colors } from '../constants/Colors'
+import { StatusBar } from 'expo-status-bar'
 
 const RootLayout = () => {
+  const colorScheme = useColorScheme()
+  const theme = Colors[colorScheme] ?? Colors.light
+
   return (
-    <Stack screenOptions={{
-      headerStyle: { backgroundColor: '#ddd'},
-      headerTintColor: '#333'
-      }}>
-        <Stack.Screen name='Index' options={{ title: "Home"}}/>
-        <Stack.Screen name='GameHistory' options={{ title: "Game History" }}/>
-        <Stack.Screen name='NewGame' options={{ title: "New Game"}}/>
-        <Stack.Screen name='StatSelection' options={{ title: "Stat Selection"}}/>
-        <Stack.Screen name='TeamsCreation' options={{ title: "Teams Creation"}}/>
-        <Stack.Screen name='StatKeeping' options={{ title: "Score Keeping", headerShown: false}}/>
-        <Stack.Screen name='LiveBoxscore' options={{ title : "Live Stats"}}/>
-        <Stack.Screen name='FinalBoxscore' options={{ title : "Final Score", headerShown: false}}/>
-    </Stack>
+    <>
+      <StatusBar value='auto'/>
+      <Stack screenOptions={{
+        headerStyle: { backgroundColor: theme.navBackground},
+        headerTintColor: theme.title
+        }}>
+          <Stack.Screen name='Index' options={{ title: "Home", headerShown: false}}/>
+          <Stack.Screen name='GameHistory' options={{ title: "" }}/>
+          <Stack.Screen name='NewGame' options={{ title: "New Game"}}/>
+          <Stack.Screen name='StatSelection' options={{ title: "Stat Selection"}}/>
+          <Stack.Screen name='TeamsCreation' options={{ title: "Teams Creation"}}/>
+          <Stack.Screen name='StatKeeping' options={{ title: "Score Keeping", headerShown: false}}/>
+          <Stack.Screen name='LiveBoxscore' options={{ title : "Live Stats"}}/>
+          <Stack.Screen name='FinalBoxscore' options={{ title : "Final Score", headerShown: false}}/>
+      </Stack>
+    </>
   )
 }
 // I have a confirmation i want to make before you end games but that doesnt need its own page

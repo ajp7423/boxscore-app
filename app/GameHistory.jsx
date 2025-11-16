@@ -1,12 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, useColorScheme } from 'react-native'
 import { Link } from 'expo-router';
+import ThemedView from '../components/ThemedView';
+
+
 
 const GameHistory = () => {
+
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Text style={styles.title}>Game History</Text>
       <Text>yuoll be able to view the final boxscores of the games you chose to save</Text>
-    </View>
+    </ThemedView>
   )
 }
 
