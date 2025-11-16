@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Link } from 'expo-router'
-import ThemedView from '../components/ThemedView'
+
+//themed components
+import ThemedView from '../components/ThemedView';
+import ThemedText from '../components/ThemedText';
+import Spacer from '../components/Spacer';
+
 
 const FinalBoxscore = () => {
   return (
     <ThemedView style={styles.container}>
-      <Text style={styles.title}>Final Boxscore</Text>
-      <Text>the final stats will be displayed here</Text>
-      <Link style={styles.link} href="Index">Home➡️</Link>
+      <ThemedText style={styles.title}>Final Boxscore</ThemedText>
+      <ThemedText>the final stats will be displayed here</ThemedText>
+      <Link style={styles.link} href="Index"><ThemedText>Home➡️</ThemedText></Link>
     </ThemedView>
   )
 }

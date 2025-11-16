@@ -1,14 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Link } from 'expo-router'
-import ThemedView from '../components/ThemedView'
+
+//themed components
+import ThemedView from '../components/ThemedView';
+import ThemedText from '../components/ThemedText';
+import Spacer from '../components/Spacer';
 
 
 const StatSelection = () => {
   return (
     <ThemedView style={styles.container}>
-      <Text style={styles.title}>Stat Selection</Text>
-      <Text>various stats that you select to track</Text>
-      <Link href="TeamsCreation" style={{marginTop: 50, fontWeight: "bold", fontSize: 28, borderBottomWidth: 1}}>Teams Creation➡️</Link>
+      <ThemedText style={styles.title}>Stat Selection</ThemedText>
+      <ThemedText>various stats that you select to track</ThemedText>
+
+      <Link href="TeamsCreation" style={{marginTop: 50, fontWeight: "bold", fontSize: 28, borderBottomWidth: 1}}><ThemedText>Teams Creation➡️</ThemedText></Link>
     </ThemedView>
   )
 }

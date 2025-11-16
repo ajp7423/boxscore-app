@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Link } from 'expo-router'
-import ThemedView from '../components/ThemedView'
+
+//themed components
+import ThemedView from '../components/ThemedView';
+import ThemedText from '../components/ThemedText';
+import Spacer from '../components/Spacer';
 
 const TeamsCreation = () => {
   return (
     <ThemedView style={styles.container}>
-      <Text style={styles.title}>Teams Creation</Text>
-      <Text>here you add team names and players and names</Text>
-      <Link href="StatKeeping" style={{marginTop: 50, fontWeight: "bold", fontSize: 28, borderBottomWidth: 1}}>Start Game➡️</Link>
+      <ThemedText style={styles.title}>Teams Creation</ThemedText>
+      <ThemedText>here you add team names and players and names</ThemedText>
+
+      <Link href="StatKeeping" style={{marginTop: 50, fontWeight: "bold", fontSize: 28, borderBottomWidth: 1}}><ThemedText>Start Game➡️</ThemedText></Link>
 
     </ThemedView>
   )

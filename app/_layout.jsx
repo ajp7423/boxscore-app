@@ -15,13 +15,16 @@ const RootLayout = () => {
         headerTintColor: theme.title
         }}>
           <Stack.Screen name='Index' options={{ title: "Home", headerShown: false}}/>
-          <Stack.Screen name='GameHistory' options={{ title: "" }}/>
+          <Stack.Screen name='GameHistory' options={{ title: "Game History" }}/>
           <Stack.Screen name='NewGame' options={{ title: "New Game"}}/>
           <Stack.Screen name='StatSelection' options={{ title: "Stat Selection"}}/>
           <Stack.Screen name='TeamsCreation' options={{ title: "Teams Creation"}}/>
           <Stack.Screen name='StatKeeping' options={{ title: "Score Keeping", headerShown: false}}/>
           <Stack.Screen name='LiveBoxscore' options={{ title : "Live Stats"}}/>
           <Stack.Screen name='FinalBoxscore' options={{ title : "Final Score", headerShown: false}}/>
+          <Stack.Screen name='(auth)/Login' options={{ title : "Login" }}/>
+          <Stack.Screen name='(auth)/Register' options={{ title : "Register" }}/>
+
       </Stack>
     </>
   )
