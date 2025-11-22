@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { Link } from 'expo-router';
 
 //themed components
 import ThemedView from '../../components/ThemedView';
@@ -9,6 +10,9 @@ const Register = () => {
   return (
     <ThemedView style={styles.container}>
       <ThemedText style={styles.title}>Register</ThemedText>
+
+      <Link href="/Login" style={styles.link}><ThemedText>Login Instead</ThemedText></Link>
+
     </ThemedView>
   )
 }
