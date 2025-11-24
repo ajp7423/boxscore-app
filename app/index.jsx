@@ -9,6 +9,7 @@ import Account from '../assets/images/account icon.png'
 import ThemedView from '../components/ThemedView';
 import ThemedText from '../components/ThemedText';
 import Spacer from '../components/Spacer';
+import ThemedBtn from '../components/ThemedLinkBtn';
 
 
 
@@ -20,10 +21,11 @@ const Home = () => {
       <Image source={Logo}/>
       <ThemedText style={styles.title}>Boxscore</ThemedText>
 
-      <Spacer height={20}/>
+      <Spacer height={30}/>
 
-      <Link style={styles.link} href="/NewGame"><ThemedText>New Game</ThemedText></Link>
-      <Link style={styles.link} href="/GameHistory"><ThemedText>Game History</ThemedText></Link>
+      <ThemedBtn href="/NewGame">New Game</ThemedBtn>
+      <Spacer height={10}/>
+      <ThemedBtn href="GameHistory">Game History</ThemedBtn>
         
     </ThemedView>
   )
@@ -40,10 +42,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 28,
-  },
-  link: {
-    marginVertical: 10,
-    borderBottomWidth: 1
   },
   account: {
     width: 35,

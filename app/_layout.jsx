@@ -17,7 +17,8 @@ const RootLayout = () => {
           <Stack.Screen name='Index' options={{ title: "Home", headerShown: false }}/>
           <Stack.Screen name='GameHistory' options={{ title: "Game History", headerTitleAlign: 'center' }}/>
           <Stack.Screen name='NewGame' options={{ title: "New Game", headerTitleAlign: 'center'}}/>
-          <Stack.Screen name='StatSelection' options={{ title: "Stat Selection", headerTitleAlign: 'center'}}/>
+          <Stack.Screen name='PickUpStatSelection' options={{ title: "Stat Selection", headerTitleAlign: 'center'}}/>
+          <Stack.Screen name='RegStatSelection' options={{ title: "Stat Selection", headerTitleAlign: 'center'}}/>
           <Stack.Screen name='TeamsCreation' options={{ title: "Teams Creation", headerTitleAlign: 'center'}}/>
           <Stack.Screen name='StatKeeping' options={{ title: "Score Keeping", headerShown: false}}/>
           <Stack.Screen name='LiveBoxscore' options={{ title : "Live Stats", headerTitleAlign: 'center'}}/>
