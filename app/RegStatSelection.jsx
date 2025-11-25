@@ -11,8 +11,8 @@ import { useState } from "react";
 
 const DEFAULT_STATS = [
   { key: "points", label: "Points" },
-  { key: "2 pointers", label: "2 pointers" },
-  { key: "3 pointers", label: "3 Pointers" },
+  { key: "2PT", label: "2PT" },
+  { key: "3PT", label: "3PT" },
   { key: "rebounds", label: "Rebounds" },
   { key: "assists", label: "Assists" },
   { key: "steals", label: "Steals" },
@@ -27,15 +27,15 @@ const StatSelection = () => {
 
   const [selected, setSelected] = useState({
   points: true,
-  "2 pointers": true,
-  "3 pointers": true,
+  "2PT": true,
+  "3PT": true,
   rebounds: true,
   assists: true,
   steals: true,
   blocks: true,
   turnovers: true,
   fouls: true,
-  "free throws": true
+  "free throws": true,
   });
 
 
@@ -51,12 +51,14 @@ const StatSelection = () => {
     <ThemedView style={styles.container}>
       <ThemedText style={styles.title}>Stat Selection</ThemedText>
 
-      {DEFAULT_STATS.map((stat) => (
-        <TouchableOpacity style={styles.row} key={stat.key} onPress={() => toggleStat(stat.key)}>
-          <ThemedText>{stat.label}</ThemedText>
-          <Checkbox value={selected[stat.key]} onValueChange={() => toggleStat(stat.key)}/>
-        </TouchableOpacity>
-      ))}
+      <View style={styles.grid}>
+        {DEFAULT_STATS.map((stat) => (
+          <TouchableOpacity style={styles.box} key={stat.key} onPress={() => toggleStat(stat.key)}>
+            <Checkbox style={styles.checkbox} value={selected[stat.key]} onValueChange={() => toggleStat(stat.key)}/>
+            <ThemedText style={styles.label}>{stat.label}</ThemedText>
+          </TouchableOpacity>
+        ))}
+      </View>
   
       <Link href="TeamsCreation" style={{marginTop: 50, fontWeight: "bold", fontSize: 28, borderBottomWidth: 1}}><ThemedText>Teams Creation➡️</ThemedText></Link>
     </ThemedView>
@@ -80,8 +82,28 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderBottomWidth: 1
   },
-  row: {
+  label: {
+    fontSize: 11,
+    marginHorizontal: 5,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  grid: {
     flexDirection: 'row',
-    alignItems: "center",
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    padding: 7
+  },
+  box: {
+    width: '31%',
+    borderColor: 'black',
+    borderWidth: 2,
+    justifyContent: 'center',
+    padding: 5,
+    alignItems: 'centers',
+    marginBottom: 20,
+  },
+  checkbox: {
+    alignSelf: 'center'
   }
 })

@@ -11,8 +11,8 @@ import { useState } from "react";
 
 const DEFAULT_STATS = [
   { key: "points", label: "Points" },
-  { key: "1 pointers", label: "1 pointers" },
-  { key: "2 pointers", label: "2 Pointers" },
+  { key: "1PT", label: "1PT" },
+  { key: "2PT", label: "2PT" },
   { key: "rebounds", label: "Rebounds" },
   { key: "assists", label: "Assists" },
   { key: "steals", label: "Steals" },
@@ -26,8 +26,8 @@ const StatSelection = () => {
 
   const [selected, setSelected] = useState({
   points: true,
-  "1 pointers": true,
-  "2 pointers": true,
+  "1PT": true,
+  "2PT": true,
   rebounds: true,
   assists: true,
   steals: true,
@@ -52,8 +52,8 @@ const StatSelection = () => {
       <View style={styles.grid}>
         {DEFAULT_STATS.map((stat) => (
           <TouchableOpacity style={styles.box} key={stat.key} onPress={() => toggleStat(stat.key)}>
+            <Checkbox style={styles.checkbox} value={selected[stat.key]} onValueChange={() => toggleStat(stat.key)}/>
             <ThemedText style={styles.label}>{stat.label}</ThemedText>
-            <Checkbox value={selected[stat.key]} onValueChange={() => toggleStat(stat.key)}/>
           </TouchableOpacity>
         ))}
       </View>
@@ -81,20 +81,27 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   label: {
-    fontSize: 14,
-    marginHorizontal: 5
+    fontSize: 11,
+    marginHorizontal: 5,
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    padding: 7
   },
   box: {
-    width: '30%',
-    alignContent: 'center',
+    width: '31%',
     borderColor: 'black',
     borderWidth: 2,
+    justifyContent: 'center',
     padding: 5,
-    marginBottom: 5
+    alignItems: 'centers',
+    marginBottom: 20,
+  },
+  checkbox: {
+    alignSelf: 'center'
   }
 })
