@@ -1,6 +1,7 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { Link } from 'expo-router'
 import { Checkbox } from 'expo-checkbox'
+import { router } from "expo-router";
+import { useGame } from "../contexts/GameContext";
 
 
 //themed components
@@ -10,7 +11,6 @@ import Spacer from '../components/Spacer';
 import { useState } from "react";
 
 const DEFAULT_STATS = [
-  { key: "points", label: "Points" },
   { key: "2PT", label: "2PT" },
   { key: "3PT", label: "3PT" },
   { key: "rebounds", label: "Rebounds" },
@@ -19,14 +19,15 @@ const DEFAULT_STATS = [
   { key: "blocks", label: "Blocks" },
   { key: "turnovers", label: "Turnovers" },
   { key: "fouls", label: "Fouls" },
-  { key: "free throws", label: "Free Throws" },
+  { key: "fts", label: "FTs" },
 ];
 
 
 const StatSelection = () => {
 
+  const { setSelectedStats } = useGame();
+  
   const [selected, setSelected] = useState({
-  points: true,
   "2PT": true,
   "3PT": true,
   rebounds: true,
@@ -35,7 +36,7 @@ const StatSelection = () => {
   blocks: true,
   turnovers: true,
   fouls: true,
-  "free throws": true,
+  "fts": true,
   });
 
 
@@ -60,7 +61,12 @@ const StatSelection = () => {
         ))}
       </View>
   
-      <Link href="TeamsCreation" style={{marginTop: 50, fontWeight: "bold", fontSize: 28, borderBottomWidth: 1}}><ThemedText>Teams Creation➡️</ThemedText></Link>
+      <TouchableOpacity onPress={() => {
+          setSelectedStats(selected);   
+          router.push("TeamsCreation");
+        }}>
+          <ThemedText style={styles.link}>Teams Creation ➡️</ThemedText>
+      </TouchableOpacity>
     </ThemedView>
   )
 }
@@ -68,42 +74,11 @@ const StatSelection = () => {
 export default StatSelection
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 50
-  },
-  title: {
-    fontWeight: "bold",
-    fontSize: 28
-  },
-  link: {
-    marginVertical: 10,
-    borderBottomWidth: 1
-  },
-  label: {
-    fontSize: 11,
-    marginHorizontal: 5,
-    fontWeight: 'bold',
-    textAlign: 'center'
-  },
-  grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    padding: 7
-  },
-  box: {
-    width: '31%',
-    borderColor: 'black',
-    borderWidth: 2,
-    justifyContent: 'center',
-    padding: 5,
-    alignItems: 'centers',
-    marginBottom: 20,
-  },
-  checkbox: {
-    alignSelf: 'center'
-  }
+  container: { flex: 1, alignItems: "center", justifyContent: "center", padding: 50 },
+  title: { fontWeight: "bold", fontSize: 28 },
+  link: { marginVertical: 10, borderBottomWidth: 1, fontSize: 25 },
+  label: { fontSize: 11, marginHorizontal: 5, fontWeight: 'bold', textAlign: 'center' },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', padding: 7 },
+  box: { width: '31%', borderColor: 'black', borderWidth: 2, justifyContent: 'center', padding: 5, marginBottom: 20, margin: 1 },
+  checkbox: { alignSelf: 'center' }
 })

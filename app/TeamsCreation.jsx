@@ -1,12 +1,15 @@
-import { StyleSheet, View, TextInput } from 'react-native'
-import { Link } from 'expo-router'
-import { useActionState, useState } from 'react'
+import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
+import { useState } from 'react'
+import { useGame } from "../contexts/GameContext";
+import { router } from "expo-router";
 
 //themed components
 import ThemedView from '../components/ThemedView'
 import ThemedText from '../components/ThemedText'
 
 const TeamsCreation = () => {
+
+  const { setTeams: setGlobalTeams } = useGame();
 
   const [teams, setTeams] = useState([
     {teamName: "", players: []},
@@ -37,24 +40,55 @@ const TeamsCreation = () => {
                 updatedAddPlayerInput[index] = text;
                 setAddPlayerInput(updatedAddPlayerInput)
               }} //maybe a button or something to add would be better than hitting enter but this is good for now
+                            
               onSubmitEditing={() => {
                 const updatedTeams = [...teams];
-                updatedTeams[index].players.push(addPlayerInput[index])
-                setTeams(updatedTeams)
+                const newPlayer = {
+                  name: addPlayerInput[index],
+                  stats: {}
+                };
 
-                const updatedInputs = [...addPlayerInput]
+                const { selectedStats } = useGame();
+                Object.keys(selectedStats).forEach(stat => {
+                  if (selectedStats[stat]) newPlayer.stats[stat] = 0;
+                });
+
+                updatedTeams[index].players.push(newPlayer);
+                setTeams(updatedTeams);
+                
+                const updatedInputs = [...addPlayerInput];
                 updatedInputs[index] = "";
                 setAddPlayerInput(updatedInputs);
               }}
-            />
+              />
+
               {team.players.map((player, i) => (
-                <ThemedText key={i} style={{ marginLeft: 30, marginTop: 5, fontWeight: 'bold' }}>
-                  • {player}
-                </ThemedText>
+                <TouchableOpacity key={i} onPress={() => {
+                    const updatedTeams = [...teams];
+                    updatedTeams[index].players.splice(i, 1);
+                    setTeams(updatedTeams);
+                  }}
+                >
+                  <ThemedText style={{ marginLeft: 30, marginTop: 5, fontWeight: 'bold' }}>
+                    • {player}
+                  </ThemedText>
+                </TouchableOpacity>
               ))}
           </View>
         ))}
       </View>
+
+      <TouchableOpacity
+        style={{ marginTop: 10, alignSelf: "center" }}
+        onPress={() => {
+          setGlobalTeams(teams);
+          router.push("StatKeeping");
+        }}
+      >
+        <ThemedText style={{ fontSize: 24, fontWeight: "bold" }}>
+          Start Game ➡️
+        </ThemedText>
+      </TouchableOpacity>
     </ThemedView>
   )
 }
