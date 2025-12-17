@@ -9,13 +9,13 @@ import ThemedText from '../components/ThemedText'
 
 const TeamsCreation = () => {
 
-  const { setTeams: setGlobalTeams } = useGame();
+  const { setTeams: setGlobalTeams, selectedStats } = useGame();
 
   const [teams, setTeams] = useState([
     {teamName: "", players: []},
     {teamName: "", players: []}
   ])
-
+  
   const [addPlayerInput, setAddPlayerInput] = useState(["", ""]);
 
   return (
@@ -48,7 +48,6 @@ const TeamsCreation = () => {
                   stats: {}
                 };
 
-                const { selectedStats } = useGame();
                 Object.keys(selectedStats).forEach(stat => {
                   if (selectedStats[stat]) newPlayer.stats[stat] = 0;
                 });

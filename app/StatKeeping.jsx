@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native'
-import { Link } from 'expo-router'
 import { useGame } from "../contexts/GameContext";
 import { useState } from 'react'
+
 
 
 //themed components
@@ -12,7 +12,7 @@ import Spacer from '../components/Spacer';
 
 const StatKeeping = () => {
 
-  const { teams, selectedStats } = useGame();
+  const { teams, selectedStats, addStat } = useGame();
 
   const activeStats = Object.keys(selectedStats).filter(stat => selectedStats[stat]);
   const [activeStat, setActiveStat] = useState(null);
@@ -45,10 +45,13 @@ const StatKeeping = () => {
       <View>
         <ThemedText>{team2.teamName}</ThemedText>
         {team2.players.map((player, i) => (
-          <ThemedText key={i}>
-            {player}
-          </ThemedText>
-        ))}
+           <ThemedText key={i} onPress={() => {
+              if (!activeStat) return;
+              addStat(0, i, activeStat);
+              }}>
+                {player.name}
+            </ThemedText>        
+          ))}
       </View>
     </ThemedView>
   )

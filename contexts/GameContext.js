@@ -8,7 +8,15 @@ export const GameProvider = ({ children }) => {
   const [teams, setTeams] = useState([]);
   const [players, setPlayers] = useState([]);
 
-  addStat(teamIndex, playerIndex, statName)
+  const addStat = (teamIndex, playerIndex, statName) => {
+    setTeams(prevTeams => {
+      const updatedTeams = [...prevTeams];
+
+      updatedTeams[teamIndex].players[playerIndex].stats[statName] += 1;
+
+      return updatedTeams;
+    });
+};
 
   return (
     
@@ -18,8 +26,7 @@ export const GameProvider = ({ children }) => {
         setSelectedStats,
         teams,
         setTeams,
-        players,
-        setPlayers
+        addStat
       }}
     >
       {children}
